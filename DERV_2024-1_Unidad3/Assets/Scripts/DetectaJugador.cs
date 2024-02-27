@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DetectaJugador : MonoBehaviour
 {
-    [SerializeField]
-    GameObject enemigo;
+    [SerializeField] GameObject enemigo;
     LookAt look;
 
     // Start is called before the first frame update

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class p_trigger_detection_singleton : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
