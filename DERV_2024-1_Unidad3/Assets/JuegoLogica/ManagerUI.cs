@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ManagerUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nombre_usuario;
+    SingletonNombre nombresingleton;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,11 @@ public class ManagerUI : MonoBehaviour
         if (scene_temp.buildIndex == 2)
         {
             string nombre = PlayerPrefs.GetString("usuario", "");
-            nombre_usuario.text = nombre;
+          
+            float score = PlayerPrefs.GetFloat("score", 0);
+            nombre_usuario.text = nombre + "score" + score.ToString();
+            
+            
         }
        
     }
@@ -27,8 +33,15 @@ public class ManagerUI : MonoBehaviour
 
     public void cambioescena(int indexNuevoScena)
     {
-        string nombre = nombre_usuario.text;
-        PlayerPrefs.SetString("usuario", nombre);
+        Scene temp = SceneManager.GetActiveScene();
+        int indexScene = temp.buildIndex;
+        if (indexScene == 0)
+        {
+            string nombre = nombre_usuario.text;
+            PlayerPrefs.SetString("usuario", nombre);
+        }
+
+      
         SceneManager.LoadScene(indexNuevoScena);
     }
 }
